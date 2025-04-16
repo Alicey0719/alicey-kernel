@@ -1,0 +1,6 @@
+linux-*/
+*.rpm
+*.gz
+*.xz
+
+.DS_Store
