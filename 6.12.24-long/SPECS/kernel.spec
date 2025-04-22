@@ -3,7 +3,7 @@
 Name:           kernel
 Version:        6.12.24
 Release:        %{release_date}.1%{?dist}_alk
-Summary:        Custom Linux Kernel
+Summary:        Alicey Linux Kernel
 License:        GPLv2
 Source0:        linux-%{version}.tar.xz
 BuildRequires:  gcc, make, ncurses-devel, bc, bison, flex, elfutils-libelf-devel, openssl-devel
@@ -11,7 +11,7 @@ Requires:       grub2-tools, grubby
 %global debug_package %{nil}
 
 %description
-Custom-built Alicey Linux Kernel for Rocky Linux.
+Custom-built Alicey Linux Kernel for rhel.
 
 %prep
 %setup -q -n linux-%{version}
@@ -44,6 +44,9 @@ cp .config %{buildroot}/boot/config-%{version}
 
 
 %post
+distro_name=$(source /etc/os-release && echo "$NAME")
+distro_version=$(source /etc/os-release && echo "$VERSION_ID")
+
 #/sbin/depmod %{version}-%{release}
 #grub2-mkconfig -o /boot/grub2/grub.cfg
 echo 'Create initramfs...'
@@ -54,7 +57,7 @@ if command -v grub2-mkconfig >/dev/null; then
 fi
 
 if command -v grubby >/dev/null; then
-    grubby --add-kernel=/boot/vmlinuz-%{version} --title="Rocky Linux 9 Alicey Linux Kernel %{version}" --initrd=/boot/initramfs-%{version}.img --copy-default || true
+    grubby --add-kernel=/boot/vmlinuz-%{version} --title="${distro_name} ${distro_version} Alicey Linux Kernel %{version}" --initrd=/boot/initramfs-%{version}.img --copy-default || true
     grubby --set-default /boot/vmlinuz-%{version} --copy-default || true
     # grubby --info=ALL
 fi
@@ -73,5 +76,5 @@ fi
 
 %changelog
 * Wed Apr 16 2025 Alicey <sirius@alicey.dev> - 6.12.24-1.el9_alk
-- Initial build of Alicey Linux kernel (longterm) for Rocky Linux.
+- Initial build of Alicey Linux kernel (longterm).
 
