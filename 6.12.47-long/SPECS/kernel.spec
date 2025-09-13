@@ -1,12 +1,12 @@
 %define release_date %(date +%%Y%%m%%d)
 
 Name:           kernel
-Version:        6.12.24
+Version:        6.12.47
 Release:        %{release_date}.1%{?dist}_alk
 Summary:        Alicey Linux Kernel
 License:        GPLv2
 Source0:        linux-%{version}.tar.xz
-BuildRequires:  gcc, make, ncurses-devel, bc, bison, flex, elfutils-libelf-devel, openssl-devel
+BuildRequires:  gcc, make, ncurses-devel, bc, bison, flex, elfutils-libelf-devel, openssl-devel, gcc-aarch64-linux-gnu
 Requires:       grub2-tools, grubby
 %global debug_package %{nil}
 
@@ -75,6 +75,6 @@ fi
 
 
 %changelog
-* Wed Apr 16 2025 Alicey <sirius@alicey.dev> - 6.12.24-1.el9_alk
+* Sun Sep 14 2025 Alicey <sirius@alicey.dev> - 6.12.47-1.el9_alk
 - Initial build of Alicey Linux kernel (longterm).
 

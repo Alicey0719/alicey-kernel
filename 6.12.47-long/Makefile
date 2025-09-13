@@ -1,5 +1,5 @@
 LANG=C
-kver=6.12.24
+kver=6.12.47
 
 do: clean dl_kernel build
 
@@ -32,5 +32,6 @@ menu_config:
 	cp -v BUILD/linux-${kver}/.config SOURCES/config
 
 run_httpserver:
+	# echo "http://172.16.1.55:12345/x86_64/"
 	cd RPMS && python3 -m http.server 12345
 
