@@ -2,7 +2,7 @@
 
 Name:           kernel
 Version:        6.18.35
-Release:        %{release_date}.1%{?dist}_alk
+Release:        %{release_date}.2%{?dist}_alk
 Summary:        Alicey Linux Kernel
 License:        GPLv2
 Source0:        linux-%{version}.tar.xz
@@ -75,6 +75,9 @@ fi
 
 
 %changelog
+* Fri Jun 12 2026 Alicey <sirius@alicey.dev> - 6.18.35-2.el9_alk
+- Tuning config(watt performance).
+
 * Fri Jun 12 2026 Alicey <sirius@alicey.dev> - 6.18.35-1.el9_alk
 - Initial build of Alicey Linux kernel (longterm).
 
